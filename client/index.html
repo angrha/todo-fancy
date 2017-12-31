@@ -12,6 +12,8 @@
 			<header class="header">
 				<h1>{{message}}</h1>
 				<input class="new-todo"
+				v-model="newTodo"
+				v-on:keyup.enter="addTodo"
 				placeholder="What needs to be done?" autofocus>
 			</header>
 			<section class="main">
