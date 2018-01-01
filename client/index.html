@@ -17,6 +17,15 @@
 				placeholder="What needs to be done?" autofocus>
 			</header>
 			<section class="main">
+				<ul class="todo-list">
+					<li class="todo" v-for="t in todos">
+						<div class="view">
+							<input class="toggle" type="checkbox" v-model="t.completed" />
+							<label> {{t.title}}</label>
+							<button class="destroy" v-on:click="removeTodo(t)"></button>
+						</div>
+					</li>
+				</ul>
 				<input class="toggle-all" id="toggle-all" type="checkbox">
 				<label for="toggle-all">Mark all as complete</label>
 				<ul class="todo-list"></ul>
