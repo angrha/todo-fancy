@@ -18,12 +18,17 @@
 			</header>
 			<section class="main">
 				<ul class="todo-list">
-					<li class="todo" v-for="t in todos">
+					<li v-for="t in filteredTodos" 
+						:class="{completed: t.completed, editing: t == editedTodo}">
 						<div class="view">
 							<input class="toggle" type="checkbox" v-model="t.completed" />
-							<label> {{t.title}}</label>
+							<label v-on:dblclick="editTodo(t)"> {{t.title}}</label>
 							<button class="destroy" v-on:click="removeTodo(t)"></button>
 						</div>
+						<input class="edit" type="text"
+							v-model="t.title" 
+							v-on:blur="doneEdit(t)"
+							v-on:keyup.enter="doneEdit(t)" />
 					</li>
 				</ul>
 				<input class="toggle-all" id="toggle-all" type="checkbox">
@@ -31,6 +36,11 @@
 				<ul class="todo-list"></ul>
 			</section>
 			<footer class="footer">
+				<ul class="filters">
+					<li><a href="#" @click.prevent="visibility='all'" :class="{selected: visibility == 'all'}">All</a></li>
+					<li><a href="#" @click.prevent="visibility='active'" :class="{selected: visibility == 'active'}">Active</a></li>
+					<li><a href="#" @click.prevent="visibility='aomplete'" :class="{selected: visibility == 'complete'}">Complete</a></li>
+				</ul>
 			</footer>
 		</section>
 		<footer class="info">
