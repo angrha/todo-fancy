@@ -1,9 +1,12 @@
 const storage = 'todo-storage'
 
+Vue.component('todos-head', {
+  template: '<h1> Todos </h1'
+})
+
 new Vue({
   el: '.todoapp',
   data: {
-    message: 'Todos',
     newTodo: '',
     todos: [],
     editedTodo: null,

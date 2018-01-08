@@ -10,7 +10,7 @@
 	<body>
 		<section class="todoapp">
 			<header class="header">
-				<h1>{{message}}</h1>
+				<todos-head></todos-head>
 				<input class="new-todo"
 				v-model="newTodo"
 				v-on:keyup.enter="addTodo"
@@ -39,7 +39,7 @@
 				<ul class="filters">
 					<li><a href="#" @click.prevent="visibility='all'" :class="{selected: visibility == 'all'}">All</a></li>
 					<li><a href="#" @click.prevent="visibility='active'" :class="{selected: visibility == 'active'}">Active</a></li>
-					<li><a href="#" @click.prevent="visibility='aomplete'" :class="{selected: visibility == 'complete'}">Complete</a></li>
+					<li><a href="#" @click.prevent="visibility='complete'" :class="{selected: visibility == 'complete'}">Complete</a></li>
 				</ul>
 			</footer>
 		</section>
@@ -50,5 +50,6 @@
 		</footer>
 		
 		<script src="assets/js/main.js"></script>
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	</body>
 </html>
